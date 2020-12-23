@@ -160,7 +160,7 @@ nav + .container {
 
 #profile-image,
 #profile-avatar {
-  border-radius: 100%;
+  border-radius: 5%;
   display: block;
   margin-left: -15px;
 }
@@ -196,12 +196,13 @@ nav + .container {
   margin-left: 10px;
 }
 
-#warbler-hero {
-  height: 360px;
+#cat-hero {
+  height: 300px;
   margin-top: -16px;
   opacity: 0.7;
   background-size: cover;
   background-position: top center;
+  background-image: url("/static/images/cat-hero.png");
 }
 
 .full-width {
@@ -396,13 +397,13 @@ p.card-bio {
   width: 100vw;
   left: 0;
   z-index: -1;
-  background-image: url("/static/images/signed-out-home.jpg");
+  background-image: url("/static/images/sign-in-home.jpg");
   background-size: cover;
   background-position: center center;
-  color: #fff;
+  color: black;
   text-align: center;
   padding: 1rem;
-  text-shadow: 0 0 8px #66757f;
+  /* text-shadow: 0 0 8px #66757f; */
 }
 
 .home-hero .btn {
@@ -553,4 +554,30 @@ p.card-bio {
   padding: 0;
   border: none;
   background: none;
+  color:  #007bff;
+}
+
+.me {
+    color: blue;
+}
+
+.lighter {
+    border: none;
+    border-radius: 5px;
+    color: black;
+    background-color: rgba(0, 204, 255, 0.795)
+}
+
+.lighter:hover {
+    border-radius: 5px;
+    color: black;
+    background-color: rgba(0, 153, 255, 0.829)
+}
+
+.squarer {
+    border-radius: 5px;
+}
+
+.center {
+margin-left: 5%;
 }

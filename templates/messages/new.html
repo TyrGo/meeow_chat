@@ -13,9 +13,21 @@
           </span>
             {% endfor %}
           {% endif %}
-          {{ form.text(placeholder="What's happening?", class="form-control", rows="3") }}
+            
+          {{ form.text(placeholder="What's up?", class="form-control", rows="3") }}
+
+            {% for subfield in form.emoji %}
+            <span class="center">
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label }}</td>
+                </tr>
+            </span>
+
+            {% endfor %}
         </div>
-        <button class="btn btn-outline-success btn-block">Add my message!</button>
+    
+        <button class="btn btn-outline-primary btn-block squarer">Add my meeeeow!</button>
       </form>
     </div>
   </div>

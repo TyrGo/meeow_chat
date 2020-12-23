@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, render_template, request, flash, redirect, session, g
+from flask.helpers import get_debug_flag
 # from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
 
@@ -33,23 +34,23 @@ connect_db(app)
 def add_user_to_g():
     """If we're logged in, add curr user to Flask global."""
 
+    # g = { user: user.id }
+
     if CURR_USER_KEY in session:
         g.user = User.query.get(session[CURR_USER_KEY])
-
     else:
         g.user = None
 
 
 def do_login(user):
     """Log in user."""
-
     session[CURR_USER_KEY] = user.id
-    # add_user_to_g() # Do we need to user this here? And what about logout removing from g?
 
 
 def do_logout():
     """Logout user."""
 
+    # del session["curr_user"]
     if CURR_USER_KEY in session:
         del session[CURR_USER_KEY]
 
@@ -65,7 +66,7 @@ def signup():
     If the there already is a user with that username: flash message
     and re-present form.
     """
-
+    
     form = UserAddForm()
 
     if form.validate_on_submit():
@@ -99,7 +100,7 @@ def login():
     if form.validate_on_submit():
         user = User.authenticate(form.username.data,
                                  form.password.data)
-
+        
         if user:
             do_login(user)
             flash(f"Hello, {user.username}!", "success")
@@ -136,7 +137,7 @@ def list_users():
         users = User.query.all()
     else:
         users = User.query.filter(User.username.like(f"%{search}%")).all()
-
+    
     return render_template('users/index.html', users=users)
 
 
@@ -278,7 +279,7 @@ def messages_add():
     form = MessageForm()
 
     if form.validate_on_submit():
-        msg = Message(text=form.text.data)
+        msg = Message(text=form.emoji.data + ' ' + form.text.data + ' ' + form.emoji.data)
         g.user.messages.append(msg)
         db.session.commit()
 

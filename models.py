@@ -56,7 +56,7 @@ class User(db.Model):
 
     header_image_url = db.Column(
         db.Text,
-        default="/static/images/warbler-hero.jpg"
+        default="/static/images/cat-hero.png"
     )
 
     bio = db.Column(
@@ -135,7 +135,8 @@ class User(db.Model):
 
         If can't find matching user (or if password is wrong), returns False.
         """
-
+        
+        # cls can be referred to as this. in this context
         user = cls.query.filter_by(username=username).first()
 
         if user:
@@ -177,6 +178,7 @@ class Message(db.Model):
 
     users_who_like = db.relationship('User', secondary="likes")
 
+
 def connect_db(app):
     """Connect this database to provided Flask app.
 
@@ -185,6 +187,7 @@ def connect_db(app):
 
     db.app = app
     db.init_app(app)
+
 
 class Like(db.Model):
     __tablename__ = 'likes'

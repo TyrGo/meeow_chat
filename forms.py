@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, TextAreaField
+from wtforms import StringField, PasswordField, TextAreaField, RadioField, SelectField
 from wtforms.validators import Optional, DataRequired, Email, Length
 
 
@@ -7,6 +7,9 @@ class MessageForm(FlaskForm):
     """Form for adding/editing messages."""
 
     text = TextAreaField('text', validators=[DataRequired()])
+    emoji = RadioField('emoji', choices=[('😺', '😺'),
+        ('😹', '😹'), ('🙀', '🙀'), ('😼', '😼'), 
+        ('😾', '😾'), ('🐱', '🐱'), ('😻', '😻')])  
 
 
 class UserAddForm(FlaskForm):
