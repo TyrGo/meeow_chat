@@ -279,7 +279,20 @@ def messages_add():
     form = MessageForm()
 
     if form.validate_on_submit():
-        msg = Message(text=form.emoji.data + ' ' + form.text.data + ' ' + form.emoji.data)
+        # value_if_true if condition else value_if_false
+        msg = ''
+
+        if form.picture.data and form.emoji.data:
+            chat = form.text.data + ' ' + form.emoji.data
+            msg = Message(text=chat, picture=form.picture.data)
+        elif not form.picture.data and form.emoji.data:
+            chat = form.text.data + ' ' + form.emoji.data
+            msg = Message(text=chat)
+        elif form.picture.data and not form.emoji.data:
+            msg = Message(text=form.text.data, picture=form.picture.data)
+        else:
+            msg = Message(text=form.text.data)
+
         g.user.messages.append(msg)
         db.session.commit()
 

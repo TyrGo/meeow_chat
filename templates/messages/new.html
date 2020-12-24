@@ -15,8 +15,10 @@
           {% endif %}
             
           {{ form.text(placeholder="What's up?", class="form-control", rows="3") }}
+          
+          {{ form.picture(placeholder="Meeow a meme! (optional picture url)", class="form-control", rows="3") }}
 
-            {% for subfield in form.emoji %}
+          {% for subfield in form.emoji %}
             <span class="center">
                 <tr>
                     <td>{{ subfield }}</td>
@@ -24,7 +26,8 @@
                 </tr>
             </span>
 
-            {% endfor %}
+          {% endfor %}
+
         </div>
     
         <button class="btn btn-outline-primary btn-block squarer">Add my meeeeow!</button>

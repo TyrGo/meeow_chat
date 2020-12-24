@@ -34,7 +34,9 @@
               {% endif %}
             </div>
             <p class="single-message">{{ message.text }}</p>
-            <span class="text-muted">{{ message.timestamp.strftime('%d %B %Y') }}</span>
+            <img class="picture" src="{{ message.picture }}"/>
+            <br>
+            <span class="text-muted-card">{{ message.timestamp.strftime('%d %B %Y') }}</span>
           </div>
         </li>
       </ul>
