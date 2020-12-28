@@ -19,6 +19,9 @@
               {{ message.timestamp.strftime('%d %B %Y') }}
             </span>
             <p>{{ message.text }}</p>
+            {% if message.picture %}
+            <img class="picture" src="{{ message.picture }}" />
+            {% endif %}
           </div>
         </li>
         

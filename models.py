@@ -1,4 +1,4 @@
-"""SQLAlchemy models for Warbler."""
+"""SQLAlchemy models for MeowChat."""
 
 from datetime import datetime
 
@@ -162,15 +162,15 @@ class Message(db.Model):
         nullable=False,
     )
 
-    picture = db.Column(
-        db.String(100000),
-        nullable=True,
-    )
-
     timestamp = db.Column(
         db.DateTime,
         nullable=False,
         default=datetime.utcnow(),
+    )
+    
+    picture = db.Column(
+        db.String(100000),
+        nullable=True,
     )
 
     user_id = db.Column(

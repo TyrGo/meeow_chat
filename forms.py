@@ -10,7 +10,7 @@ class MessageForm(FlaskForm):
     picture = StringField('picture', validators=[Optional()])
     emoji = RadioField('emoji', choices=[('😺', '😺'),
         ('😹', '😹'), ('🙀', '🙀'), ('😼', '😼'), 
-        ('😾', '😾'), ('🐱', '🐱'), ('😻', '😻')]) 
+        ('😾', '😾'), ('🐱', '🐱'), ('😻', '😻')], validators=[Optional()])
 
 
 class UserAddForm(FlaskForm):

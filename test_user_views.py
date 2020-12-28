@@ -16,7 +16,7 @@ from models import db, connect_db, Message, User, Like
 # before we import our app, since that will have already
 # connected to the database
 
-os.environ['DATABASE_URL'] = "postgresql:///warbler-test"
+os.environ['DATABASE_URL'] = "postgresql:///meowchat-test"
 
 # Now we can import app
 

@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 
 from flask import Flask, render_template, request, flash, redirect, session, g
 from flask.helpers import get_debug_flag
@@ -15,7 +16,7 @@ app = Flask(__name__)
 # Get DB_URI from environ variable (useful for production/testing) or,
 # if not set there, use development local db.
 app.config['SQLALCHEMY_DATABASE_URI'] = (
-    os.environ.get('DATABASE_URL', 'postgres:///warbler'))
+    os.environ.get('DATABASE_URL', 'postgres:///meowchat'))
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
@@ -146,7 +147,7 @@ def users_show(user_id):
     """Show user profile."""
 
     user = User.query.get_or_404(user_id)
-
+    # print(f"heres the messages: {user.messages[0].timestamp} **** {user.messages[1].timestamp}")
     return render_template('users/show.html', user=user)
 
 
@@ -293,6 +294,7 @@ def messages_add():
         else:
             msg = Message(text=form.text.data)
 
+        msg.timestamp = datetime.utcnow()  # bit of a bandaid for weird model behaviour when interval v short
         g.user.messages.append(msg)
         db.session.commit()
 

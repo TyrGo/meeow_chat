@@ -19,11 +19,10 @@
                 {% if g.user.id == message.user.id %}
                   <form method="POST"
                         action="/messages/{{ message.id }}/delete">
-                    <button class="btn btn-outline-danger squarer">Delete</button>
+                   <button class="btn btn-outline-danger squarer">Delete</button>
                   </form>
                 {% elif g.user.is_following(message.user) %}
-                  <form method="POST"
-                        action="/users/stop-following/{{ message.user.id }}">
+                  <form method="POST" action="/users/stop-following/{{ message.user.id }}">
                     <button class="btn btn-primary squarer">Unfollow</button>
                   </form>
                 {% else %}
@@ -34,7 +33,7 @@
               {% endif %}
             </div>
             <p class="single-message">{{ message.text }}</p>
-            <img class="picture" src="{{ message.picture }}"/>
+              <img class="picture" src="{{ message.picture }}"/>
             <br>
             <span class="text-muted-card">{{ message.timestamp.strftime('%d %B %Y') }}</span>
           </div>
@@ -44,3 +43,20 @@
   </div>
 
 {% endblock %}
+<div class="container">
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-2">Avatar</div>
+      <div class="col-md-8">Handle</div>
+      <div class="col-md-2">Delete button</div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">Message</div>
+    </div>
+    <div class="row">
+      <!-- right is either a bootstrap class (if you can ffind it) or a class you define yourself
+      to basically align the text to the right of the screen -->
+      <div class="col-md-12 right">Date</div>
+    </div>
+  </div>
+</div>
