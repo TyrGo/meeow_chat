@@ -599,6 +599,6 @@ p.card-bio {
 }
 
 .text-muted-card {
-  margin-left: 290px;
+  float: right;
   color: grey;
 }
